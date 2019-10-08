@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+ "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+ "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+	<constant name="struts.devMode" value="false" />
+	<constant name="struts.custom.i18n.resources" value="ApplicationResources" />
+	<constant name="struts.convention.action.packages" value="com.jgeppert.struts2.bootstrap.showcase" />
+
+
+
+
+	<package name="default" extends="struts-default" namespace="/">
+
+		<result-types>
+			<result-type name="tiles"
+				class="org.apache.struts2.views.tiles.TilesResult" />
+		</result-types>
+
+		<interceptors>
+
+			<interceptor name="mylogging"
+				class="interceptor.MyLoggingInterceptor"></interceptor>
+
+			<interceptor-stack name="loggingStack">
+				<interceptor-ref name="mylogging" />
+				<interceptor-ref name="defaultStack" />
+
+			</interceptor-stack>
+		</interceptors>
+
+		<action name="login" class="entity.LoginAction">
+			<interceptor-ref name="loggingStack"></interceptor-ref>
+			<result name="success">Sistema.jsp</result>
+			<result name="error">Login.jsp</result>
+		</action>
+
+		<action name="customer" class="entity.CustomerAction">
+			<result name="success" type="tiles">/customer.tiles</result>
+			<result name="input" type="tiles">/customer.tiles</result>
+		</action>
+
+		<action name="customer-form">
+			<result name="success" type="tiles">/customer.tiles</result>
+		</action>
+
+
+		<action name="sucesso">
+			<result name="successo" type="tiles">/sucesso.tiles</result>
+		</action>
+
+		<action name="userImage" class="entity.FileUploadAction">
+			<interceptor-ref name="fileUpload">
+				<param name="maximumSize">2097152</param>
+				<param name="allowedTypes">image/png, image/gif, image/jpeg, image/pjpeg</param>
+			</interceptor-ref>
+			<result name="success">SuccessUserImage.jsp</result>
+			<result name="input">UserImage.jsp</result>
+		</action>
+
+		<action name="ajaxdemo" class="entity.AjaxAutocomplete">
+			<interceptor-ref name="loggingStack"></interceptor-ref>
+			<result name="success" type="tiles">/ajax.tiles</result>
+			<result type="tiles">/ajax.tiles</result>
+		</action>
+
+		<action name="ajaxdemo" class="entity.AjaxAutocomplete">
+			<interceptor-ref name="loggingStack"></interceptor-ref>
+			<result name="success" type="tiles">/ajaxdemo.tiles</result>
+			<result type="tiles">/ajaxdemo.tiles</result>
+		</action>
+
+	</package>
+
+</struts>

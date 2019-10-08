@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      > 
+
+<h:head></h:head> 
+<h:body>
+<p:panel header="Enviar Relatorio">
+ <h:form id="form1" target="_blank">
+  <p:commandButton value="Abrir Relatorio"
+       action="#{mb.relatorio}" ajax="false">
+       </p:commandButton>
+ <p:messages></p:messages>
+ </h:form>
+</p:panel>
+
+<p:panel header="Gravacao dos Dados">
+ <h:form id="form2">
+  <p:panelGrid columns="2">
+        <h:outputText value="Nome" />
+        <p:inputText value="#{mb.funcionario.nome}" />
+        <h:outputText value="Sexo" />
+        <p:selectOneMenu value="#{mb.funcionario.sexo}">
+            <f:selectItem itemLabel="Masculino" itemValue="m" />
+            <f:selectItem itemLabel="Feminino" itemValue="f" />
+       </p:selectOneMenu>
+        <h:outputText value="Email" />
+        <p:inputText value="#{mb.funcionario.email}" />
+        <h:outputText value="Salario" />
+        <p:inputText value="#{mb.funcionario.salario}" />
+        
+        <p:commandButton value="Gravar" 
+         ajax="true"  update=":form2" action="#{mb.gravar}"
+         ></p:commandButton>
+        
+  </p:panelGrid>
+    <p:messages></p:messages>
+     <p:growl></p:growl>   
+  </h:form>
+</p:panel>
+
+
+
+<p:panel header="Busca">
+ <h:form id="form3">
+  <p:panelGrid columns="2">
+  
+        <h:outputText value="Codigo" />
+          <p:selectOneMenu  value="#{mb.funcionario.id}">
+          <f:selectItems value="#{mb.combo}"   />
+          </p:selectOneMenu>
+         
+        
+                
+  </p:panelGrid>
+    <p:messages></p:messages>
+     <p:growl></p:growl>   
+  </h:form>
+</p:panel>
+
+
+</h:body> 
+</html>

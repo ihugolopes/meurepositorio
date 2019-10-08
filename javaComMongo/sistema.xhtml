@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      > 
+
+<h:head></h:head> 
+<h:body>
+<p:panel  header="Projeto Cliente">
+<h:form id="form1">
+    <h:panelGrid columns="2">
+        <h:outputText value="Id"></h:outputText>
+        <p:inputText value="#{mb.cliente._id}" />
+        <h:outputText value="Nome"></h:outputText>
+        <p:inputText value="#{mb.cliente.nome}" />
+        <h:outputText value="Email"></h:outputText>
+        <p:inputText value="#{mb.cliente.email}" />
+         <p:commandButton value="Gravar" 
+         action="#{mb.gravar}"  ajax="true" update=":form1">
+         </p:commandButton>
+   </h:panelGrid>
+            <p:growl></p:growl> 
+ </h:form>
+</p:panel>
+<p:panel header="DataGrid">
+<h:form id="form2">
+<p:dataGrid     var="cliente"  value="#{mb.clientes}"
+                    rows="3"   columns="2" 
+                      layout="grid"  paginator="true"
+                       paginatorTemplate="{CurrentPageReport}
+                         {FirstPageLink} {PreviousPageLink}  {PageLinks}"
+                     rowsPerPageTemplate="3,5,9"
+                    >
+  <f:facet name="header">
+      Listagem dos Clientes
+  </f:facet>
+  <p:panel  header="#{cliente._id}"   style="text-align:center">
+   <h:outputText value="#{cliente.nome}" /><br/>
+   <h:outputText value="#{cliente.email}" /><br/>
+   <h:outputText value="#{cliente.ativo}" /><br/>
+  </p:panel>
+ </p:dataGrid>
+ 
+</h:form>
+</p:panel>
+
+
+</h:body> 
+</html>

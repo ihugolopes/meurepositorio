@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+ "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+ "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+	<constant name="struts.devMode" value="false" />
+	<constant name="struts.custom.i18n.resources" value="ApplicationResources" />
+	<constant name="struts.convention.action.packages" value="com.jgeppert.struts2.bootstrap.showcase" />
+
+
+
+
+	<package name="default" extends="struts-default" namespace="/">
+
+		<result-types>
+			<result-type name="tiles"
+				class="org.apache.struts2.views.tiles.TilesResult" />
+		</result-types>
+
+		<interceptors>
+
+			<interceptor name="mylogging"
+				class="interceptor.MyLoggingInterceptor"></interceptor>
+
+			<interceptor-stack name="loggingStack">
+				<interceptor-ref name="mylogging" />
+				<interceptor-ref name="defaultStack" />
+
+			</interceptor-stack>
+		</interceptors>
+
+		<action name="login" class="entity.LoginAction">
+			<interceptor-ref name="loggingStack"></interceptor-ref>
+			<result name="success">Sistema.jsp</result>
+			<result name="error">Login.jsp</result>
+		</action>
+
+		<action name="customer" class="entity.CustomerAction">
+			<result name="success" type="tiles">/customer.tiles</result>
+			<result name="input" type="tiles">/customer.tiles</result>
+		</action>
+
+		<action name="customer-form">
+			<result name="success" type="tiles">/customer.tiles</result>
+		</action>
+
+
+		<action name="sucesso">
+			<result name="successo" type="tiles">/sucesso.tiles</result>
+		</action>
+
+		<action name="fileUploadAction" 
+	    class="model.FileUploadAction" method="display">
+	    <result name="none">fileupload.jsp</result>
+	    </action>
+	    
+	    <action name="resultAction" class="model.FileUploadAction">
+	    <interceptor-ref name="exception"/>
+            <interceptor-ref name="i18n"/>
+            <interceptor-ref name="fileUpload">
+       		<param name="allowedTypes">text/plain</param>
+       		<param name="maximumSize">10240</param>
+  	    </interceptor-ref> 
+            <interceptor-ref name="params">
+                <param name="excludeParams">dojo\..*,^struts\..*</param>
+            </interceptor-ref>
+            <interceptor-ref name="validation">
+                <param name="excludeMethods">input,back,cancel,browse</param>
+            </interceptor-ref>
+            <interceptor-ref name="workflow">
+                <param name="excludeMethods">input,back,cancel,browse</param>
+            </interceptor-ref>
+    
+	    <result name="success">result.jsp</result>
+	    <result name="input">fileupload.jsp</result>
+			
+	</action>
+
+
+	</package>
+
+</struts>

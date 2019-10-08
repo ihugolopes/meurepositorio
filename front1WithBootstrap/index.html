@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <title>Aula 1</title>
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+    
+    .pace {
+  -webkit-pointer-events: none;
+  pointer-events: none;
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box;
+
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+
+  -webkit-background-clip: padding-box;
+  -moz-background-clip: padding;
+  background-clip: padding-box;
+
+  z-index: 2000;
+  position: fixed;
+  margin: auto;
+  top: 12px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 200px;
+  height: 50px;
+  overflow: hidden;
+}
+
+.pace .pace-progress {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box;
+
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+
+  -webkit-background-clip: padding-box;
+  -moz-background-clip: padding;
+  background-clip: padding-box;
+
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+
+  display: block;
+  position: absolute;
+  right: 100%;
+  margin-right: -7px;
+  width: 93%;
+  top: 7px;
+  height: 14px;
+  font-size: 12px;
+  background: #dd2239;
+  color: #dd2239;
+  line-height: 60px;
+  font-weight: bold;
+  font-family: Helvetica, Arial, "Lucida Grande", sans-serif;
+
+  -webkit-box-shadow: 120px 0 #fff, 240px 0 #fff;
+  -ms-box-shadow: 120px 0 #fff, 240px 0 #fff;
+  box-shadow: 120px 0 #fff, 240px 0 #fff;
+}
+
+.pace .pace-progress:after {
+  content: attr(data-progress-text);
+  display: inline-block;
+  position: fixed;
+  width: 45px;
+  text-align: right;
+  right: 0;
+  padding-right: 16px;
+  top: 4px;
+}
+
+.pace .pace-progress[data-progress-text="0%"]:after { right: -200px }
+.pace .pace-progress[data-progress-text="1%"]:after { right: -198.14px }
+.pace .pace-progress[data-progress-text="2%"]:after { right: -196.28px }
+.pace .pace-progress[data-progress-text="3%"]:after { right: -194.42px }
+.pace .pace-progress[data-progress-text="4%"]:after { right: -192.56px }
+.pace .pace-progress[data-progress-text="5%"]:after { right: -190.7px }
+.pace .pace-progress[data-progress-text="6%"]:after { right: -188.84px }
+.pace .pace-progress[data-progress-text="7%"]:after { right: -186.98px }
+.pace .pace-progress[data-progress-text="8%"]:after { right: -185.12px }
+.pace .pace-progress[data-progress-text="9%"]:after { right: -183.26px }
+.pace .pace-progress[data-progress-text="10%"]:after { right: -181.4px }
+.pace .pace-progress[data-progress-text="11%"]:after { right: -179.54px }
+.pace .pace-progress[data-progress-text="12%"]:after { right: -177.68px }
+.pace .pace-progress[data-progress-text="13%"]:after { right: -175.82px }
+.pace .pace-progress[data-progress-text="14%"]:after { right: -173.96px }
+.pace .pace-progress[data-progress-text="15%"]:after { right: -172.1px }
+.pace .pace-progress[data-progress-text="16%"]:after { right: -170.24px }
+.pace .pace-progress[data-progress-text="17%"]:after { right: -168.38px }
+.pace .pace-progress[data-progress-text="18%"]:after { right: -166.52px }
+.pace .pace-progress[data-progress-text="19%"]:after { right: -164.66px }
+.pace .pace-progress[data-progress-text="20%"]:after { right: -162.8px }
+.pace .pace-progress[data-progress-text="21%"]:after { right: -160.94px }
+.pace .pace-progress[data-progress-text="22%"]:after { right: -159.08px }
+.pace .pace-progress[data-progress-text="23%"]:after { right: -157.22px }
+.pace .pace-progress[data-progress-text="24%"]:after { right: -155.36px }
+.pace .pace-progress[data-progress-text="25%"]:after { right: -153.5px }
+.pace .pace-progress[data-progress-text="26%"]:after { right: -151.64px }
+.pace .pace-progress[data-progress-text="27%"]:after { right: -149.78px }
+.pace .pace-progress[data-progress-text="28%"]:after { right: -147.92px }
+.pace .pace-progress[data-progress-text="29%"]:after { right: -146.06px }
+.pace .pace-progress[data-progress-text="30%"]:after { right: -144.2px }
+.pace .pace-progress[data-progress-text="31%"]:after { right: -142.34px }
+.pace .pace-progress[data-progress-text="32%"]:after { right: -140.48px }
+.pace .pace-progress[data-progress-text="33%"]:after { right: -138.62px }
+.pace .pace-progress[data-progress-text="34%"]:after { right: -136.76px }
+.pace .pace-progress[data-progress-text="35%"]:after { right: -134.9px }
+.pace .pace-progress[data-progress-text="36%"]:after { right: -133.04px }
+.pace .pace-progress[data-progress-text="37%"]:after { right: -131.18px }
+.pace .pace-progress[data-progress-text="38%"]:after { right: -129.32px }
+.pace .pace-progress[data-progress-text="39%"]:after { right: -127.46px }
+.pace .pace-progress[data-progress-text="40%"]:after { right: -125.6px }
+.pace .pace-progress[data-progress-text="41%"]:after { right: -123.74px }
+.pace .pace-progress[data-progress-text="42%"]:after { right: -121.88px }
+.pace .pace-progress[data-progress-text="43%"]:after { right: -120.02px }
+.pace .pace-progress[data-progress-text="44%"]:after { right: -118.16px }
+.pace .pace-progress[data-progress-text="45%"]:after { right: -116.3px }
+.pace .pace-progress[data-progress-text="46%"]:after { right: -114.44px }
+.pace .pace-progress[data-progress-text="47%"]:after { right: -112.58px }
+.pace .pace-progress[data-progress-text="48%"]:after { right: -110.72px }
+.pace .pace-progress[data-progress-text="49%"]:after { right: -108.86px }
+.pace .pace-progress[data-progress-text="50%"]:after { right: -107px }
+.pace .pace-progress[data-progress-text="51%"]:after { right: -105.14px }
+.pace .pace-progress[data-progress-text="52%"]:after { right: -103.28px }
+.pace .pace-progress[data-progress-text="53%"]:after { right: -101.42px }
+.pace .pace-progress[data-progress-text="54%"]:after { right: -99.56px }
+.pace .pace-progress[data-progress-text="55%"]:after { right: -97.7px }
+.pace .pace-progress[data-progress-text="56%"]:after { right: -95.84px }
+.pace .pace-progress[data-progress-text="57%"]:after { right: -93.98px }
+.pace .pace-progress[data-progress-text="58%"]:after { right: -92.12px }
+.pace .pace-progress[data-progress-text="59%"]:after { right: -90.26px }
+.pace .pace-progress[data-progress-text="60%"]:after { right: -88.4px }
+.pace .pace-progress[data-progress-text="61%"]:after { right: -86.53999999999999px }
+.pace .pace-progress[data-progress-text="62%"]:after { right: -84.68px }
+.pace .pace-progress[data-progress-text="63%"]:after { right: -82.82px }
+.pace .pace-progress[data-progress-text="64%"]:after { right: -80.96000000000001px }
+.pace .pace-progress[data-progress-text="65%"]:after { right: -79.1px }
+.pace .pace-progress[data-progress-text="66%"]:after { right: -77.24px }
+.pace .pace-progress[data-progress-text="67%"]:after { right: -75.38px }
+.pace .pace-progress[data-progress-text="68%"]:after { right: -73.52px }
+.pace .pace-progress[data-progress-text="69%"]:after { right: -71.66px }
+.pace .pace-progress[data-progress-text="70%"]:after { right: -69.8px }
+.pace .pace-progress[data-progress-text="71%"]:after { right: -67.94px }
+.pace .pace-progress[data-progress-text="72%"]:after { right: -66.08px }
+.pace .pace-progress[data-progress-text="73%"]:after { right: -64.22px }
+.pace .pace-progress[data-progress-text="74%"]:after { right: -62.36px }
+.pace .pace-progress[data-progress-text="75%"]:after { right: -60.5px }
+.pace .pace-progress[data-progress-text="76%"]:after { right: -58.64px }
+.pace .pace-progress[data-progress-text="77%"]:after { right: -56.78px }
+.pace .pace-progress[data-progress-text="78%"]:after { right: -54.92px }
+.pace .pace-progress[data-progress-text="79%"]:after { right: -53.06px }
+.pace .pace-progress[data-progress-text="80%"]:after { right: -51.2px }
+.pace .pace-progress[data-progress-text="81%"]:after { right: -49.34px }
+.pace .pace-progress[data-progress-text="82%"]:after { right: -47.480000000000004px }
+.pace .pace-progress[data-progress-text="83%"]:after { right: -45.62px }
+.pace .pace-progress[data-progress-text="84%"]:after { right: -43.76px }
+.pace .pace-progress[data-progress-text="85%"]:after { right: -41.9px }
+.pace .pace-progress[data-progress-text="86%"]:after { right: -40.04px }
+.pace .pace-progress[data-progress-text="87%"]:after { right: -38.18px }
+.pace .pace-progress[data-progress-text="88%"]:after { right: -36.32px }
+.pace .pace-progress[data-progress-text="89%"]:after { right: -34.46px }
+.pace .pace-progress[data-progress-text="90%"]:after { right: -32.6px }
+.pace .pace-progress[data-progress-text="91%"]:after { right: -30.740000000000002px }
+.pace .pace-progress[data-progress-text="92%"]:after { right: -28.880000000000003px }
+.pace .pace-progress[data-progress-text="93%"]:after { right: -27.02px }
+.pace .pace-progress[data-progress-text="94%"]:after { right: -25.16px }
+.pace .pace-progress[data-progress-text="95%"]:after { right: -23.3px }
+.pace .pace-progress[data-progress-text="96%"]:after { right: -21.439999999999998px }
+.pace .pace-progress[data-progress-text="97%"]:after { right: -19.58px }
+.pace .pace-progress[data-progress-text="98%"]:after { right: -17.72px }
+.pace .pace-progress[data-progress-text="99%"]:after { right: -15.86px }
+.pace .pace-progress[data-progress-text="100%"]:after { right: -14px }
+
+
+.pace .pace-activity {
+  position: absolute;
+  width: 100%;
+  height: 28px;
+  z-index: 2001;
+  box-shadow: inset 0 0 0 2px #dd2239, inset 0 0 0 7px #FFF;
+  border-radius: 10px;
+}
+
+.pace.pace-inactive {
+  display: none;
+}
+
+    
+    </style>
+</head>
+
+<body id="inicio">
+
+    <!-- Modal -->
+    <div class="modal fade" id="modalExemplo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Login de usuário</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+
+                        <div class="form-group">
+
+                            <input type="text" class="form-control" placeholder="Login">
+                        </div>
+
+                        <div class="form-group">
+                            <input type="password" class="form-control" placeholder="Senha">
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Entrar" class="btn btn-primary">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    <!--<button type="button" class="btn btn-primary">Salvar mudanças</button>-->
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#"><img src="img/logo.png" alt=""> </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Alterna navegação">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" data-aos="fade-up"
+                        data-aos-delay="1000" href="#">Home <span class="sr-only">(Página atual)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-aos="fade-up"
+                        data-aos-delay="2000" href="#destaque">Destaques</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-aos="fade-up"
+                        data-aos-delay="3000" href="#">Preços</a>
+                    </li>
+                    <li class="nav-item dropdown" data-aos="fade-up"
+                    data-aos-delay="4000">
+                        <a class="nav-link dropdown-toggle"href="#" id="navbarDropdownMenuLink" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Link dropdown
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="#">Ação</a>
+                            <a class="dropdown-item" href="#">Outra ação</a>
+                            <a class="dropdown-item" href="#">Algo mais aqui</a>
+                        </div>
+                    </li>
+                </ul>
+
+                <a href="" class="btn btn-primary" data-toggle="modal" data-target="#modalExemplo">Login</a>
+
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid py-3 px-0" data-aos="zoom-in">
+        <div id="carouselExampleIndicators" data-interval=3000 class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="d-block w-100" src="img/slide-1.jpg" alt="Primeiro Slide">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Cidade Maravilhosa</h5>
+                        <p>Cristo Redentor - Rio de Janeiro</p>
+
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" src="img/slide-2.jpg" alt="Segundo Slide">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Cidade Maravilhosa</h5>
+                        <p>Cristo Redentor - Rio de Janeiro</p>
+
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" src="img/slide-3.jpg" alt="Terceiro Slide">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Cidade Maravilhosa</h5>
+                        <p>Cristo Redentor - Rio de Janeiro</p>
+
+                    </div>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Anterior</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Próximo</span>
+            </a>
+        </div>
+        <!-- <img src="img/slide-1.jpg" class="img-fluid" alt="Rio de Janeiro"> -->
+    </div>
+    <article class="container text-center" id="destaque">
+        <div class="row">
+            <div class="col text-center my-3">
+                <h1>Lorem ipsum dolor sit.</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati et eligendi veritatis sequi
+                    consequuntur quae sint officiis libero dicta illum delectus labore tenetur sunt, ea deserunt eaque
+                    natus, sit reiciendis iure velit! Ipsum illum reiciendis voluptates, enim quisquam laudantium,
+                    maiores cupiditate neque nobis sint explicabo ea beatae doloremque dolore exercitationem?</p>
+            </div>
+        </div>
+        <div class="row">
+            <section class="col-md-6 col-lg-3 mb-5">
+                <img src="img/icon-aviao.png" alt="">
+                <h2>Lorem, ipsum.</h2>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusamus assumenda est quod eum? Ea
+                    reprehenderit
+                    beatae, impedit repudiandae sunt rerum.</p>
+                <a href="#" class="btn btn-outline-dark">Saiba mais</a>
+            </section>
+            <section class="col-md-6 col-lg-3 mb-5">
+                <img src="img/icon-barco.png" alt="">
+                <h2>Lorem, ipsum.</h2>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusamus assumenda est quod eum? Ea
+                    reprehenderit
+                    beatae, impedit repudiandae sunt rerum.</p>
+                <a href="#" class="btn btn-outline-dark">Saiba mais</a>
+            </section>
+            <section class="col-md-6 col-lg-3 mb-5">
+                <img src="img/icon-onibus.png" alt="">
+                <h2>Lorem, ipsum.</h2>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusamus assumenda est quod eum? Ea
+                    reprehenderit
+                    beatae, impedit repudiandae sunt rerum.</p>
+                <a href="#" class="btn btn-outline-dark">Saiba mais</a>
+            </section>
+            <section class="col-md-6 col-lg-3 mb-5">
+                <img src="img/icon-trilha.png" alt="">
+                <h2>Lorem, ipsum.</h2>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusamus assumenda est quod eum? Ea
+                    reprehenderit
+                    beatae, impedit repudiandae sunt rerum.</p>
+                <a href="#" class="btn btn-outline-dark">Saiba mais</a>
+            </section>
+        </div>
+    </article>
+
+    <article class="container text-center">
+
+        <div class="row">
+            <div class="col">
+                <img src="img/icon-trilha.png" alt="">
+                <h3>Lorem Ipsum</h3>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid labore temporibus maiores. Ad sit
+                    perferendis, tempore aut incidunt beatae cum! Quia unde, at mollitia doloribus magni laudantium
+                    necessitatibus explicabo sed.</p>
+
+                <div class="table-responsive">
+                    <table class="table table-dark">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Primeiro</th>
+                                <th scope="col">Último</th>
+                                <th scope="col">Nickname</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td>@fat</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>Larry</td>
+                                <td>the Bird</td>
+                                <td>@twitter</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <footer class="bg-dark text-white text-center py-2 mt-3">
+        <p class="mb-0"> Desenvolvido por Caldeirôn Tech<a href="#inicio">Subir</a></p>
+    </footer>
+
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script>
+        AOS.init();
+    </script>
+      <script src="js/jquery.scrollTo.min.js"></script>
+      <script src="js/jquery.localScroll.min.js"></script>
+      <script src="js/pace.min.js"></script>
+
+      <script>
+          $(document).ready(function(){
+              $('.navbar, footer').localScroll({
+                  target:'body',
+                  duration: 1000,
+          offset: -65
+              });
+          });
+      </script>
+</body>
+
+</html>
