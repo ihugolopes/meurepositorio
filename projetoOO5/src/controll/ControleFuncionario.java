@@ -33,15 +33,21 @@ public class ControleFuncionario {
 	public static void main(String[] args) {
 		List<Funcionario> programadores = listarProgramador("programacao");
 		List<Funcionario> dbas = listarProgramador("dba");
+		
+		System.out.println("Listando Programadores:");
 		programadores.stream().forEach(System.out::println);
 		System.out.println("------------------------------");
 		
+		System.out.println("Listando dbas:");
 		dbas.stream().forEach(System.out::println);
-		Map<Boolean, List<Funcionario>> resposta = funcionarios.stream()
-				.collect(Collectors.partitioningBy(a -> a.getIdade() <= 18));
+		System.out.println("------------------------------");
+		
+		System.out.println("Listando por idade:");
+		Map<Boolean, List<Funcionario>> resposta = funcionarios.stream().collect(Collectors.partitioningBy(a -> a.getIdade() <= 18));
 		System.out.println(resposta);
 		System.out.println("-----------------------------");
 		
+		System.out.println("Listando por sexo:");
 		Map<Boolean, List<Funcionario>> lista = new HashMap<Boolean, List<Funcionario>>();
 		lista = listarSexo("f");
 		System.out.println(lista.get(true));
