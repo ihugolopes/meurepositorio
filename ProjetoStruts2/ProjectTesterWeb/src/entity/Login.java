@@ -73,7 +73,8 @@ public class Login {
 
 	public static void main(String[] args) throws SQLException {
 		LoginDao dao = new LoginDao();
-		Login l = new Login(null, "Carlos Santos", "carlos@gmail.com", "123");
+		String senhaCriptografada = dao.gerarCriptografia("123");
+		Login l = new Login(null, "Hugo Lopes", "hugocripto@gmail.com", senhaCriptografada);
 		
 		try {
 			dao.create(l);

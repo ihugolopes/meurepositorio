@@ -51,26 +51,33 @@
 			<result name="successo" type="tiles">/sucesso.tiles</result>
 		</action>
 
-		<action name="userImage" class="entity.FileUploadAction">
-			<interceptor-ref name="fileUpload">
-				<param name="maximumSize">2097152</param>
-				<param name="allowedTypes">image/png, image/gif, image/jpeg, image/pjpeg</param>
-			</interceptor-ref>
-			<result name="success">SuccessUserImage.jsp</result>
-			<result name="input">UserImage.jsp</result>
-		</action>
+		<action name="fileUploadAction" 
+	    class="model.FileUploadAction" method="display">
+	    <result name="none">fileupload.jsp</result>
+	    </action>
+	    
+	    <action name="resultAction" class="model.FileUploadAction">
+	    <interceptor-ref name="exception"/>
+            <interceptor-ref name="i18n"/>
+            <interceptor-ref name="fileUpload">
+       		<param name="allowedTypes">text/plain</param>
+       		<param name="maximumSize">10240</param>
+  	    </interceptor-ref> 
+            <interceptor-ref name="params">
+                <param name="excludeParams">dojo\..*,^struts\..*</param>
+            </interceptor-ref>
+            <interceptor-ref name="validation">
+                <param name="excludeMethods">input,back,cancel,browse</param>
+            </interceptor-ref>
+            <interceptor-ref name="workflow">
+                <param name="excludeMethods">input,back,cancel,browse</param>
+            </interceptor-ref>
+    
+	    <result name="success">result.jsp</result>
+	    <result name="input">fileupload.jsp</result>
+			
+	</action>
 
-		<action name="ajaxdemo" class="entity.AjaxAutocomplete">
-			<interceptor-ref name="loggingStack"></interceptor-ref>
-			<result name="success" type="tiles">/ajax.tiles</result>
-			<result type="tiles">/ajax.tiles</result>
-		</action>
-
-		<action name="ajaxdemo" class="entity.AjaxAutocomplete">
-			<interceptor-ref name="loggingStack"></interceptor-ref>
-			<result name="success" type="tiles">/ajaxdemo.tiles</result>
-			<result type="tiles">/ajaxdemo.tiles</result>
-		</action>
 
 	</package>
 

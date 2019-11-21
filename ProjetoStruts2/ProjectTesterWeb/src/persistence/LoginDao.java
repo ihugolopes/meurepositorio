@@ -67,8 +67,8 @@ public class LoginDao extends Dao {
 		}
 	}
 
-	public String logar(String email, String senha) throws Exception {
-		String existe = "input";
+	public Boolean logar(String email, String senha) throws Exception {
+		boolean existe = false;
 		open();
 		stmt = con.prepareStatement("SELECT * from login WHERE email = ? AND senha = ?");
 		stmt.setString(1, email);
@@ -76,7 +76,7 @@ public class LoginDao extends Dao {
 		rs = stmt.executeQuery();
 
 		if (rs.next()) {
-			existe = "sucess";
+			existe = true;
 		}
 		close();
 		return existe;
@@ -93,7 +93,7 @@ public class LoginDao extends Dao {
 		LoginDao lg = new LoginDao();
 		Login l = new Login();
 
-		//LISTAR LOGINS
+		// LISTAR LOGINS
 		try {
 			System.out.println("Listando os logins: ");
 			System.out.println(lg.findAll());
@@ -101,12 +101,12 @@ public class LoginDao extends Dao {
 			System.out.println(e.getMessage());
 		}
 
-		//LOGAR
+		// LOGAR
 		try {
 
-			String result = lg.logar("hugo@gmail.com", "123");
+			boolean result = lg.logar("hugo@gmail.com", "123");
 
-			if (result == "sucess") {
+			if (result == true) {
 				System.out.println("Loguei!");
 			} else {
 				System.out.println("Não loguei!");
@@ -115,12 +115,12 @@ public class LoginDao extends Dao {
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
-		
-		//CRIAR LOGIN
+
+		// CRIAR LOGIN
 		String senha = "123";
 		String senhaCriptografada = lg.gerarCriptografia(senha);
 		Login novoL = new Login(null, "Samuel Caetano", "samuel@gmail.com", senhaCriptografada);
-		
+
 		try {
 			lg.create(novoL);
 		} catch (Exception e) {

@@ -16,7 +16,7 @@ public class Dao {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			con = DriverManager.getConnection(
-					"jdbc:mysql://localhost:3306/strutsteste?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC",
+					"jdbc:mysql://localhost:3306/pdf?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC",
 					"root", "12345");
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
