@@ -1,22 +1,4 @@
-Livros
-blogedsonbelem.com.br
-Aulas são documentads _
-
- lucianamedeiros.coti@gmail.com
- julianamota.coti@gmail.com
-
------  ( redes sociais)
- profedsonbelem@gmail.com
-
-=====================================
-
-98199-0108 (belem)
-
-98201-2525 (luciana)
-
-98214-1825 (juliana)
-
-=====================================
+﻿
 
  encapsulamento
  oo ser (herança) /herdar
