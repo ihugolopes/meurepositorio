@@ -1,0 +1,10 @@
+1 - Precisei criar uma nova tabela contendo os campos id_aluguel e id_filme, 
+	pois os valores para os campos são únicos, não podendo conter um List de filmes.
+	TABELA: create table falugados(id_aluguel int, id_filme int);
+	
+2 - Passei a Listar o Aluguel por objeto, já que contém não só um arrayList, mas uma segunda lista de filmes.
+
+3 - Criei a query "ALTER TABLE falugados ADD CONSTRAINT FK_Alugados FOREIGN KEY (id_aluguel) REFERENCES en_aluguel(id_aluguel)" 
+	para fazer o delete dos aluguéis.
+	
+4 - A tabela "en_aluguel" ficará como histórico de filmes alugados, e a "falugados" ficará como filmes ATUALMENTE alugados, podendo se eliminar o aluguel. 

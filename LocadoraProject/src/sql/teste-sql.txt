@@ -1,0 +1,37 @@
+Seu nome: Hugo Victor Cabral de Lima Lopes.
+
+1) 	SELECT CRIADO:
+	
+		SELECT id_filme, data_lancamento, nome, descricao FROM en_filme WHERE (select MIN(data_lancamento) FROM en_filme) = data_lancamento
+  
+2) 	UPDATE CRIADO: 
+
+		UPDATE en_cliente c
+		SET alugueis = (SELECT COUNT("id_cliente")
+		FROM "en_aluguel" Where id_cliente = c.id_cliente)
+		WHERE c.id_cliente = 1
+
+	SELECT CRIADO: 
+
+		SELECT id_cliente, nome, alugueis FROM en_cliente order by alugueis
+
+
+3) 	UPDATE CRIADO:
+
+		UPDATE en_cliente c
+		SET total_gasto = (SELECT SUM("valor")
+		FROM "en_aluguel" Where id_cliente = c.id_cliente)
+		WHERE c.id_cliente = 1
+
+	ALTER CRIADO: 
+
+		UPDATE en_cliente c
+		SET ano = 2020
+		FROM "en_aluguel"
+		WHERE c.id_cliente = 4
+
+	SELECT CRIADO:
+	
+		
+		SELECT id_cliente, nome, alugueis, total_gasto, ano 
+		FROM en_cliente order by total_gasto desc
